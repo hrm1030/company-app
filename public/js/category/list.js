@@ -214,6 +214,7 @@ $(document).ready(function() {
 
     sub_table.on('click', '.btn_sub_edit', function() {
         var category_id = $(this).attr('category_id');
+
         $.ajax({
             url : '/category/get_category',
             method : 'post',
@@ -222,6 +223,7 @@ $(document).ready(function() {
             },
             success : function(data) {
                 var category = data.category;
+                console.log(category.pid);
                 $('#category').select2('val', `${category.pid}`);
                 $('#subcategory_name').val(category.name);
                 $('#btn_subcat_save').attr('category_id', category.id);
